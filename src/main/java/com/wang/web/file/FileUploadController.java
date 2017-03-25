@@ -21,7 +21,7 @@ public class FileUploadController {
 
 	@RequestMapping("/uploadExcel")
 	@ResponseBody
-	public void uploadExcel(@RequestParam("file")MultipartFile file, @RequestParam("orgId") Long orgId){
+	public String uploadExcel(@RequestParam("file")MultipartFile file){
 		try {
 			/*
 			上传文件
@@ -30,12 +30,12 @@ public class FileUploadController {
 			String filePath = paramsConfiguration.getUploadPath();
 			byte[] bytes = file.getBytes();
 			String fullFilePath = FileUtil.saveFile(filePath, fileName, bytes);
-			System.out.println("File path: " + fullFilePath);
-			logger.info("File upload success.");
+			logger.info("File upload success." + fullFilePath);
 		} catch (Exception e) {
 			logger.warn("File upload fail.", e);
 			e.printStackTrace();
 		}
+		return "upload success!";
 	}
 
 }

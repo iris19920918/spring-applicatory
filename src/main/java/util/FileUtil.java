@@ -1,5 +1,8 @@
 package util;
 
+import com.wang.config.ParamsConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,36 +15,25 @@ import java.util.Locale;
  */
 public class FileUtil {
 
-    public static String saveFile(String filePath, String fileName, byte[] bytes) {
-        String fileFullName = "";
-        FileOutputStream fos = null;
-        String dateFolder = new SimpleDateFormat("yyyyMMdd", Locale.CHINA)
-                .format(new Date());
-        try {
+    @Autowired private static ParamsConfiguration paramsConfiguration;
+
+    public static String saveFile(String filePath, String fileName, byte[] bytes) throws IOException {
+        String dateFolder = new SimpleDateFormat("yyyyMMdd", Locale.CHINA).format(new Date());
             String suffix = String.valueOf(System.currentTimeMillis());
             if (filePath == null || filePath.trim().length() == 0) {
-                filePath = "E:/upload/" + dateFolder + "/";
+                filePath = paramsConfiguration.getUploadPath() + "/" + dateFolder + "/";
+            } else {
+                filePath = filePath + "/" + dateFolder + "/";
             }
             File file = new File(filePath);
             if (!file.exists()) {
                 file.mkdirs();
             }
             File fullFile = new File(filePath, suffix + fileName);
-            fileFullName = fullFile.getPath();
-            fos = new FileOutputStream(fullFile);
+            String fileFullName = fullFile.getPath();
+            FileOutputStream fos = new FileOutputStream(fullFile);
             fos.write(bytes);
-        } catch (Exception e) {
-            e.printStackTrace();
-            fileFullName = "";
-        } finally {
-            if (fos != null) {
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    fileFullName = "";
-                }
-            }
-        }
+            fos.close();
         return fileFullName;
     }
 }
