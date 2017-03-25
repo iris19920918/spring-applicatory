@@ -1,0 +1,24 @@
+#端口配置
+server:
+  port: 9091
+  contextPath: /spring-applicatory
+params:
+  uploadPath: /home/upload
+#spring:
+#  thymeleaf:
+#    mode: HTML5
+#    encoding: UTF-8
+#    content-type: text/html
+#    cache: false
+spring:
+  jetbrick:
+    template:
+      enabled: true
+      charset: UTF-8
+      content-type: text/html
+      prefix: pages/
+      suffix: .html
+  http:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 20MB
