@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import util.FileUtil;
 
+import java.io.File;
+
 @Controller
 @RequestMapping("/upload")
 public class FileUploadController {
@@ -29,6 +31,10 @@ public class FileUploadController {
 			String fileName = file.getOriginalFilename();
 			String filePath = paramsConfiguration.getUploadPath();
 			byte[] bytes = file.getBytes();
+
+			File neWFile = new File(filePath + fileName);
+			file.transferTo(neWFile);
+
 			String fullFilePath = FileUtil.saveFile(filePath, fileName, bytes);
 			logger.info("File upload success." + fullFilePath);
 		} catch (Exception e) {
