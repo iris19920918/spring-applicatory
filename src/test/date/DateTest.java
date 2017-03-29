@@ -4,12 +4,18 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by WANGDD on 2017/3/25.
  */
 public class DateTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Test
     public void testDate() {
@@ -20,5 +26,13 @@ public class DateTest {
         } else {
             logger.warn("不符合时间格式！");
         }
+    }
+
+    @Test
+    public void testCalendar() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, -1);
+        Date yesterday = calendar.getTime();
+        logger.info("CST: " + yesterday.toString() + "yesterday:" + sdf.format(yesterday));
     }
 }
