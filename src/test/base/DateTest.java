@@ -1,4 +1,4 @@
-package date;
+package base;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -34,5 +34,6 @@ public class DateTest {
         calendar.add(Calendar.DATE, -1);
         Date yesterday = calendar.getTime();
         logger.info("CST: " + yesterday.toString() + "yesterday:" + sdf.format(yesterday));
+
     }
 }
