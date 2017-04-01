@@ -19,7 +19,7 @@ public class NumTest {
 
     @Test
     public void testPercent() {
-        Double a = 142D;
+        Double a = 149D;
         Double b = 145D;
         Double percent = a/b;
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
