@@ -38,4 +38,18 @@ public class NumTest {
         logger.info("用百分数表示parseFloat表示：" + parseFloat*100 + "%");
         logger.info("强制保存两位小数用百分数表示：" + df.format(Double.parseDouble(towDigits)*100) + "%");
     }
+
+    /**
+     * 保留几位小数
+     * @return
+     */
+    @Test
+    public void getFloat() {
+        Float floatNumber = 23.4535F;
+        int decimalDigits = 0;
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setMaximumFractionDigits(decimalDigits);
+        Float floatNum = Float.parseFloat(numberFormat.format(floatNumber));
+        logger.info("floatNum=" + floatNum);
+    }
 }
