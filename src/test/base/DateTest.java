@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,12 +29,27 @@ public class DateTest {
         }
     }
 
+    /**
+     * 获取昨天时间
+     */
     @Test
     public void testCalendar() {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, -1);
         Date yesterday = calendar.getTime();
         logger.info("CST: " + yesterday.toString() + "yesterday:" + sdf.format(yesterday));
+    }
 
+    /**
+     * 获取某月的天数
+     */
+    @Test
+    public void getDaysOfMonth() throws ParseException {
+        String dateStr = "2017-02-5 00:00:00";
+        Calendar calendar = Calendar.getInstance();
+        Date date = sdf.parse(dateStr);
+        calendar.setTime(date);
+        int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        logger.warn(dateStr + "这个月份总共" + days + "天！");
     }
 }
