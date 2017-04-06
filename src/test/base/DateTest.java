@@ -41,7 +41,7 @@ public class DateTest {
     }
 
     /**
-     * 获取某月的天数
+     * 获取某个月份的天数
      */
     @Test
     public void getDaysOfMonth() throws ParseException {
