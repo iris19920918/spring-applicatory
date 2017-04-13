@@ -8,6 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by WANGDD on 2017/3/25.
@@ -16,7 +17,8 @@ public class DateTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
 
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private static SimpleDateFormat sdfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Test
     public void testDate() {
@@ -45,11 +47,49 @@ public class DateTest {
      */
     @Test
     public void getDaysOfMonth() throws ParseException {
-        String dateStr = "2017-02-5 00:00:00";
+        String dateStr = "2017-02-5";
         Calendar calendar = Calendar.getInstance();
         Date date = sdf.parse(dateStr);
         calendar.setTime(date);
         int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         logger.warn(dateStr + "这个月份总共" + days + "天！");
+    }
+
+    /**
+     * 获取当前天、月、年、星期
+     */
+    @Test
+    public void getCurrentDateInfo() throws ParseException {
+        String dateStr = "2017-04-01";
+        Date date = sdf.parse(dateStr);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int day = calendar.get(Calendar.DATE);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int year = calendar.get(Calendar.YEAR);
+        int dow = calendar.get(Calendar.DAY_OF_WEEK);
+        int dom = calendar.get(Calendar.DAY_OF_MONTH);
+        int doy = calendar.get(Calendar.DAY_OF_YEAR);
+        logger.info("Current Date:" + calendar.getTime());
+        logger.info("Day:" + day);
+        logger.info("month:" + month);
+        logger.info("year:" + year);
+        logger.info("Day of Week:" + dow);
+        logger.info("Day of Month:" + dom);
+        logger.info("Day of Year:" + doy);
+    }
+
+    /**
+     * 获取N天前的日期
+     */
+    @Test
+    public void getBeforDate(){
+        int n = 0;
+        Calendar calendar = Calendar.getInstance(Locale.CHINA);
+        calendar.add(Calendar.DATE, n);
+        String date = sdf.format(calendar.getTime());
+        String dates = sdfs.format(calendar.getTime());
+        logger.info("当前时间：" + sdf.format(new Date()) + ";" + n + "天前的日期为：" + date);
+        logger.info(n + "天前的带时分秒日期为：" + dates);
     }
 }

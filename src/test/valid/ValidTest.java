@@ -19,5 +19,12 @@ public class ValidTest {
         } else {
             logger.warn("不符合手机格式！");
         }
+
+        Object id = 01;
+        if (id.equals(0)) {
+            logger.info("ture");
+        } else {
+            logger.info("false");
+        }
     }
 }
