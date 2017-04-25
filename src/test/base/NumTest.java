@@ -19,8 +19,8 @@ public class NumTest {
 
     @Test
     public void testPercent() {
-        Double a = 149D;
-        Double b = 145D;
+        Double a = 3D;
+        Double b = 27D;
         Double percent = a/b;
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
         numberFormat.setMaximumFractionDigits(4);
