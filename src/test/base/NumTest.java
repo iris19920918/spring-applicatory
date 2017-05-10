@@ -52,4 +52,20 @@ public class NumTest {
         Float floatNum = Float.parseFloat(numberFormat.format(floatNumber));
         logger.info("floatNum=" + floatNum);
     }
+
+    /**
+     * 数字校验
+     */
+    @Test
+    public void validNum() {
+//        String str = "12353re";
+//        if (str.matches("\\d+")) {
+//            logger.info("是纯数字！");
+//        } else {
+//            logger.warn("不是纯数字！");
+//        }
+        long a = 300002L;
+        long b = 300002L;
+        System.out.print(a==b);
+    }
 }
