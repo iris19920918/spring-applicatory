@@ -68,4 +68,26 @@ public class NumTest {
         long b = 300002L;
         System.out.print(a==b);
     }
+
+    @Test
+    public void validLong() {
+        Long a = 1234L;
+        Long b = 1234L;
+        String astr = "1234";
+        if (a == b) {
+            logger.info("a=b true");
+        } else {
+            logger.info("a=b false");
+        }
+        if (a.equals(b)){
+            logger.info("a.equals(b),true");
+        } else {
+            logger.info("a.equals(b),false");
+        }
+        if (a.equals(astr)) {
+            logger.info("a.equals(astr),true");
+        } else {
+            logger.info("a.equals(astr),false");
+        }
+    }
 }

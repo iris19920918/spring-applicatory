@@ -22,8 +22,10 @@ public class DateTest {
 
     @Test
     public void testDate() {
-        String str = "2017-02-02 20:59:33";
-        String regex = "\\d{4}-(0[1-9]|1[1-2])-(0[1-9]|[1-2]\\d|3[0-1])\\s([0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\d";
+//        String str = "2017-02-02 20:59:33";
+        String str = "1991-10-01";
+//        String regex = "\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\\d|3[0-1])\\s([0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\d";
+        String regex = "\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2]\\d|3[0-1])";
         if (str.matches(regex)) {
             logger.info("符合时间格式！");
         } else {
