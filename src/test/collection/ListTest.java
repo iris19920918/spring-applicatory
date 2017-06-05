@@ -19,9 +19,10 @@ public class ListTest {
     public void ListTest() {
         List<Map<String, Object>> mapList = new ArrayList<>();
         int i = 0;
-        for (Map<String, Object> item : mapList) {
-            logger.info("第" + i + "次");
-            i++;
-        }
+//        for (Map<String, Object> item : mapList) {
+//            logger.info("第" + i + "次");
+//            i++;
+//        }
+        Map<String, Object> map = mapList.get(0);
     }
 }
