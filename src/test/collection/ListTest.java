@@ -1,5 +1,6 @@
 package collection;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,5 +25,14 @@ public class ListTest {
 //            i++;
 //        }
         Map<String, Object> map = mapList.get(0);
+    }
+
+    @Test
+    public void ListToJsonString() {
+        List<Object> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            list.add(i + "");
+        }
+        logger.info("返回结果：" + JSONObject.toJSONString(list));
     }
 }

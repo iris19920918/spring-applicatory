@@ -1,6 +1,7 @@
 package json;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,5 +19,11 @@ public class JSONArrayTest {
         jsonArray.add(123L);
         jsonArray.add(124l);
         logger.info("json数组：" + jsonArray.toJSONString());
+    }
+
+    @Test
+    public void jsonToStringTest() {
+        String a = null;
+        logger.info(JSONObject.toJSONString(a));
     }
 }
