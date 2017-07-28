@@ -90,4 +90,24 @@ public class NumTest {
             logger.info("a.equals(astr),false");
         }
     }
+
+    @Test
+    public void doubleCompute() {
+        Double a = 1.50D;
+        Double b = 3.50D;
+        Double c = a.sum(a, b);
+        Double d = 10*a;
+        Double e = a*b;
+        Double f = b - a;
+        logger.info("a + b = " + c);
+        logger.info("b - a = " + (b-a));
+        logger.info("10a = " + df.format(d));
+        logger.info("a*b = " + e + "保留两位小数：" +df.format(e));
+        logger.info("f=" + f);
+        if (f > 0) {
+            logger.info("a>b");
+        } else {
+            logger.info("a<b");
+        }
+    }
 }

@@ -19,12 +19,24 @@ public class ListTest {
     @Test
     public void ListTest() {
         List<Map<String, Object>> mapList = new ArrayList<>();
-        int i = 0;
+//        int i = 0;
 //        for (Map<String, Object> item : mapList) {
 //            logger.info("第" + i + "次");
 //            i++;
 //        }
-        Map<String, Object> map = mapList.get(0);
+//        Map<String, Object> map = mapList.get(0);
+        List<String> emptyList = new ArrayList<>();
+        boolean isEmpty = true;
+        for (int i = 0; i < 10; i++) {
+            emptyList.add("");
+        }
+        for (int i = 0; i < emptyList.size(); i++) {
+            if (emptyList.get(i) != null && !"".equals(emptyList.get(i))){
+                isEmpty = false;
+                break;
+            }
+        }
+        logger.info("isEmpty=" + isEmpty + ";emptyList=" + JSONObject.toJSONString(emptyList));
     }
 
     @Test
