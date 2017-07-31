@@ -93,8 +93,8 @@ public class NumTest {
 
     @Test
     public void doubleCompute() {
-        Double a = 1.50D;
-        Double b = 3.50D;
+        Double a = 1.59D;
+        Double b = 3.42D;
         Double c = a.sum(a, b);
         Double d = 10*a;
         Double e = a*b;

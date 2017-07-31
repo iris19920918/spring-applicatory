@@ -3,6 +3,7 @@ package base;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.DateUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -93,5 +94,17 @@ public class DateTest {
         String dates = sdfs.format(calendar.getTime());
         logger.info("当前时间：" + sdf.format(new Date()) + ";" + n + "天前的日期为：" + date);
         logger.info(n + "天前的带时分秒日期为：" + dates);
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void betweenMonthTest() {
+        Date now = new Date();
+        String birthdayStr = "2016-06-07";
+        Date birthday = DateUtils.parse(birthdayStr, "yyyy-MM-dd");
+        long month = DateUtils.countMonths(birthday, now);
+        logger.info("生日为" + birthdayStr + "的宝宝月龄为：" + month);
     }
 }
