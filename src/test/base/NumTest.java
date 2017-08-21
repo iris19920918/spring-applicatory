@@ -3,10 +3,13 @@ package base;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.NumberValidationUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by WANGDD on 2017/3/30.
@@ -99,15 +102,68 @@ public class NumTest {
         Double d = 10*a;
         Double e = a*b;
         Double f = b - a;
+        double g = 0;
+        double h = 6;
         logger.info("a + b = " + c);
         logger.info("b - a = " + (b-a));
         logger.info("10a = " + df.format(d));
         logger.info("a*b = " + e + "保留两位小数：" +df.format(e));
         logger.info("f=" + f);
+        logger.info("a/g=" + a/g + ";h/g=" + h/g);
         if (f > 0) {
             logger.info("a>b");
         } else {
             logger.info("a<b");
+        }
+    }
+
+    /**
+     * 生产随机数
+     */
+    @Test
+    public void radomNumTest() {
+        String fileName = "1501772287874学员信息模板.xlsx";
+        int index = fileName.indexOf(".");
+        logger.info("文件后缀：" + fileName.substring(index));
+        Double a = (Double)null;
+    }
+
+    /**
+     * 查询是否是纯数字
+     */
+    @Test
+    public void isNum(){
+        String a = "-120498";
+        String b = "0";
+//        if (a.matches("\\d+")) {
+//            logger.info("a是数字！");
+//        } else {
+//            logger.info("a不是纯数字！");
+//        }
+
+        if (a.matches("[0-9]*")) {
+            logger.info("a是数字！");
+        } else {
+            logger.info("a不是纯数字！");
+        }
+
+        if (b.matches("[1-9]*")) {
+            logger.info("b是大于零的整数");
+        } else {
+            logger.info("b不是大于零的整数");
+        }
+    }
+
+    /**
+     * 校验正小数
+     */
+    @Test
+    public void isPositiveDecimalTest() {
+        String a = "124.333";
+        if (NumberValidationUtils.isPositiveDecimal(a)) {
+            logger.info("true");
+        } else {
+            logger.info("false");
         }
     }
 }
