@@ -159,8 +159,21 @@ public class NumTest {
      */
     @Test
     public void isPositiveDecimalTest() {
-        String a = "124.333";
+        String a = "1.10";
         if (NumberValidationUtils.isPositiveDecimal(a)) {
+            logger.info("true");
+        } else {
+            logger.info("false");
+        }
+    }
+
+    /**
+     * 是否是非负实数
+     */
+    @Test
+    public void isPositiveRealNumberTest() {
+        String a = "0.02";
+        if (NumberValidationUtils.isPositiveRealNumber(a)) {
             logger.info("true");
         } else {
             logger.info("false");

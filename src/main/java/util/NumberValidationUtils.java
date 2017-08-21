@@ -29,11 +29,11 @@ public class NumberValidationUtils {
     }
 
     public static boolean isPositiveDecimal(String orginal){
-        return isMatch("\\+{0,1}[0]\\.[1-9]*|\\+{0,1}[1-9]\\d*\\.\\d*", orginal);
+        return isMatch("\\+{0,1}[0]\\.[0-9]*|\\+{0,1}[1-9]\\d*\\.\\d*", orginal);
     }
 
     public static boolean isNegativeDecimal(String orginal){
-        return isMatch("^-[0]\\.[1-9]*|^-[1-9]\\d*\\.\\d*", orginal);
+        return isMatch("^-[0]\\.[1-9]*|^-[0-9]\\d*\\.\\d*", orginal);
     }
 
     public static boolean isDecimal(String orginal){
@@ -42,5 +42,15 @@ public class NumberValidationUtils {
 
     public static boolean isRealNumber(String orginal){
         return isWholeNumber(orginal) || isDecimal(orginal);
+    }
+
+    /**
+     * 是否是非负实数
+     *
+     * @param orginal
+     * @return
+     */
+    public static boolean isPositiveRealNumber(String orginal) {
+        return isPositiveInteger(orginal) || isPositiveDecimal(orginal);
     }
 }
