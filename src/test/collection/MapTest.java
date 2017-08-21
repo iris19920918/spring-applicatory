@@ -17,5 +17,18 @@ public class MapTest {
     @Test
     public void mapTest() {
         Map<Object, Object> map = new HashMap<>();
+        long a = 12232;
+        map.put("uid", a);
+        map.put("num", a);
+        if(map.containsKey("uid")) {
+            logger.info("containsKey=true");
+        } else {
+            logger.info("containsKey=flase");
+        }
+        if (map.containsValue(12232L)) {
+            logger.info("containsValue=true");
+        } else {
+            logger.info("containsValue=false");
+        }
     }
 }
