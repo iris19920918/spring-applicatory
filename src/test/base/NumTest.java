@@ -159,7 +159,7 @@ public class NumTest {
      */
     @Test
     public void isPositiveDecimalTest() {
-        String a = "1.10";
+        String a = "1.1011";
         if (NumberValidationUtils.isPositiveDecimal(a)) {
             logger.info("true");
         } else {
@@ -172,7 +172,7 @@ public class NumTest {
      */
     @Test
     public void isPositiveRealNumberTest() {
-        String a = "0.02";
+        String a = "0.00";
         if (NumberValidationUtils.isPositiveRealNumber(a)) {
             logger.info("true");
         } else {

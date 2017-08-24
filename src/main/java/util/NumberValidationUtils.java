@@ -17,7 +17,7 @@ public class NumberValidationUtils {
     }
 
     public static boolean isPositiveInteger(String orginal) {
-        return isMatch("^\\+{0,1}[1-9]\\d*", orginal);
+        return isMatch("^\\+{0,1}[0-9]\\d*", orginal);
     }
 
     public static boolean isNegativeInteger(String orginal) {
