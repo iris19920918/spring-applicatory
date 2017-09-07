@@ -179,4 +179,15 @@ public class NumTest {
             logger.info("false");
         }
     }
+
+    /**
+     * 取整数
+     */
+    @Test
+    public void getInteger() {
+        int month = 0;
+        int age = (int) Math.floor(month/12); //向下取整
+        logger.info("月龄=" + month);
+        logger.info("年龄=" + age);
+    }
 }

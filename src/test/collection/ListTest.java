@@ -47,4 +47,17 @@ public class ListTest {
         }
         logger.info("返回结果：" + JSONObject.toJSONString(list));
     }
+
+    /**
+     * List转成String数组
+     */
+    @Test
+    public void ListToArrayTest() {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            list.add(i + "");
+        }
+        String[] a = list.toArray(new String[]{});
+        logger.info("返回数组"+ a.toString());
+    }
 }

@@ -471,10 +471,11 @@ public class DateUtils {
 
 	/**
 	 * 计算两个日期相差的月份数
+	 *
 	 * @param minDate
 	 * @param maxDate
-     * @return
-     */
+	 * @return
+	 */
 	public static int countMonths(Date minDate, Date maxDate) {
 		if (minDate == null || maxDate == null) {
 			return 0;
@@ -484,7 +485,29 @@ public class DateUtils {
 		c1.setTime(minDate);
 		c2.setTime(maxDate);
 		int year = c2.get(Calendar.YEAR) - c1.get(Calendar.YEAR);
-		return year*12 + c2.get(Calendar.MONTH) - c1.get(Calendar.MONTH);
+		int minDay = c1.get(Calendar.DAY_OF_MONTH);
+		int maxDay = c2.get(Calendar.DAY_OF_MONTH);
+		int month = year * 12 + c2.get(Calendar.MONTH) - c1.get(Calendar.MONTH);
+		if (maxDay < minDay) {
+			if (month > 0) {
+				month--;
+			}
+		}
+		return month;
+	}
+
+	/**
+	 * 将指定日期按照指定格式转成Integer类型
+	 *
+	 * @param in
+	 * @param pattern
+	 * @return
+	 */
+	public static Integer formatInt(Date in, String pattern) {
+		if (null == in)
+			return null;
+		SimpleDateFormat df = new SimpleDateFormat(pattern);
+		return Integer.valueOf(df.format(in));
 	}
 
 
