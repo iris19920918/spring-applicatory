@@ -190,4 +190,15 @@ public class NumTest {
         logger.info("月龄=" + month);
         logger.info("年龄=" + age);
     }
+
+    /**
+     * 测试Double类型
+     */
+    @Test
+    public void testDouble() {
+        Double a = 1.02;
+        double b = 1.992;
+
+        logger.info("a+b=" + (a+b));
+    }
 }

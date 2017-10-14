@@ -35,4 +35,22 @@ public class ForTest {
             }
         }
     }
+    /**
+     * 纯java使用 return也可以跳出双重循环，方法未void
+     */
+    @Test
+    public void testForReturn(){
+        for(int i=0;i<10;i++){//外层循环
+            System.out.println("i="+i);//输出外围循环的循环次数
+
+            for(int j=0;j<10;j++){//内层循环
+                System.out.println("j="+j);
+                if(j==2){
+                    return;
+                }
+            }
+        }
+    }
+
+
 }
