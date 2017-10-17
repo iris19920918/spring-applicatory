@@ -201,4 +201,14 @@ public class NumTest {
 
         logger.info("a+b=" + (a+b));
     }
+
+    /**
+     *
+     */
+    @Test
+    public void getYearOfLong() {
+        Long max = Long.MAX_VALUE;
+        Long year = max/1000/60/60/24/365;
+        logger.info("Long最多存放" + year + "年");
+    }
 }

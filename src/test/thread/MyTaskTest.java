@@ -12,9 +12,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class MyTaskTest {
 
+    private static final ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 200, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
+
     @Test
     public void taskTest() {
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 200, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(5));
 
         for(int i=0; i<15; i++){
             MyTask myTask = new MyTask(i);
