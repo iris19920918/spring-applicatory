@@ -470,6 +470,21 @@ public class DateUtils {
 	}
 
 	/**
+	 * n<0:获取n月前日期
+	 * n>0:获取n月后日期
+	 * n=0:获取当前日期
+	 * @param date 指定日期
+	 * @param n
+	 * @return
+	 */
+	public static Date getBeforOrFutureDateOfMonth(Date date, final int n) {
+		Calendar calendar = Calendar.getInstance(Locale.CHINA);
+		calendar.setTime(date);
+		calendar.add(Calendar.MONTH, n);
+		return calendar.getTime();
+	}
+
+	/**
 	 * 计算两个日期相差的月份数
 	 *
 	 * @param minDate
@@ -509,7 +524,6 @@ public class DateUtils {
 		SimpleDateFormat df = new SimpleDateFormat(pattern);
 		return Integer.valueOf(df.format(in));
 	}
-
 
 	public static void main(String[] args) {
 		Date now = new Date();

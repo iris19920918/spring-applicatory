@@ -60,4 +60,14 @@ public class ListTest {
         String[] a = list.toArray(new String[]{});
         logger.info("返回数组"+ a.toString());
     }
+
+    @Test
+    public void stringToListTest() {
+        String a = "{\"courseId\":\"340901710685933568\",\"royaltyMethod\":\"1\",\"payMethod\":\"2\",\"gradientOne\":[{\"time\":\"0\",\"money\":\"100\",\"zj_parent_index\":\"0\",\"zj_son_index\":\"0\"}";
+        String b = "{\"time\":\"2\",\"money\":\"200\",\"zj_parent_index\":\"0\",\"zj_son_index\":\"1\"}],\"personMoney\":[{\"money\":\"1\"}],\"zj_parent_index\":\"0\",\"gradientTwo\":[{\"time\":\"0\",\"zj_parent_index\":\"0\",\"zj_son_index\":\"0\"}],\"gradientThree\":[{\"time\":\"0\",\"zj_parent_index\":\"0\",\"zj_son_index\":\"0\"}]}";
+        List<String> list = new ArrayList<>();
+        list.add(a);
+        list.add(b);
+        logger.info("返回結果：" + JSONObject.toJSONString(list));
+    }
 }
