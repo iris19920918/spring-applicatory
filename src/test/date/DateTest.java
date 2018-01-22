@@ -14,8 +14,12 @@ public class DateTest {
 
     @Test
     public void testDate() {
-        String speDateStr = DateUtils.format(DateUtils.getBeforOrFutureDate(-30), DateUtils.PATTERN_DAY);
+        String date = "2018-01-01";
+        String speDateStr = DateUtils.format(DateUtils.getBeforOrFutureDate(-31), DateUtils.PATTERN_DAY);
         int speDateInt = DateUtils.formatInt(DateUtils.getBeforOrFutureDate(-30), "yyyyMMdd");
-        logger.info("speDateStr:" + speDateStr + ";speDateInt:" + speDateStr);
+//        logger.info("speDateStr:" + speDateStr + ";speDateInt:" + speDateInt);
+
+        int days = DateUtils.getDaysOfMonth(DateUtils.parse(date, DateUtils.PATTERN_DAY));
+        logger.info("days:" + days);
     }
 }

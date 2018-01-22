@@ -70,4 +70,22 @@ public class ListTest {
         list.add(b);
         logger.info("返回結果：" + JSONObject.toJSONString(list));
     }
+
+    /**
+     * 测试for循环1s执行多少次
+     */
+    @Test
+    public void forTest() {
+        Long a = Long.MAX_VALUE;
+        int b = Integer.MAX_VALUE;
+        logger.info("a=" + a + "b=" + b);
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < a; i++) {
+            long end = System.currentTimeMillis();
+            if (end - start == 1000) {
+                logger.info("i=" + i);
+                break;
+            }
+        }
+    }
 }
