@@ -1,5 +1,8 @@
 package util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,6 +11,8 @@ import java.util.Locale;
 
 
 public class DateUtils {
+
+	private static final Logger logger = LoggerFactory.getLogger(DateUtils.class);
 	
 	public static final String PATTERN_TIME = "yyyy-MM-dd HH:mm:ss";
 	public static final String PATTERN_MIN = "yyyy-MM-dd HH:mm";
@@ -526,55 +531,60 @@ public class DateUtils {
 	}
 
 	/**
-	 * 根据当前日期获得所在周的日期区间（周一和周日日期）
-	 *
-	 * @return
-	 * @author zhaoxuepu
-	 * @throws ParseException
-	 */
-	public String getTimeInterval(Date date) {
-		Calendar cal = Calendar.getInstance();
+	 * 根据指定日期获得所在周的日期区间（周一至周日日期）
+	 * @param date
+	 * @param interval 1 周一，2 周二，3 周三，4 周四，5 周五，6 周六，7 周日
+     * @return
+     */
+	public static Date getLocalWeekTime(Date date, int interval) {
+		if (interval < 1 || interval > 7) {
+			logger.error("根据当前日期获得所在周的日期区间：", "interval不合法！");
+			return null;
+		} else {
+			interval--;
+		}
+		Calendar cal = Calendar.getInstance(Locale.CHINA);
 		cal.setTime(date);
+
 		// 判断要计算的日期是否是周日，如果是则减一天计算周六的，否则会出问题，计算到下一周去了
 		int dayWeek = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
 		if (1 == dayWeek) {
 			cal.add(Calendar.DAY_OF_MONTH, -1);
 		}
-		// System.out.println("要计算日期为:" + sdf.format(cal.getTime())); // 输出要计算日期
-		// 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
-		cal.setFirstDayOfWeek(Calendar.MONDAY);
-		// 获得当前日期是一个星期的第几天
-		int day = cal.get(Calendar.DAY_OF_WEEK);
-		// 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
-		cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day);
-		String imptimeBegin = sdf.format(cal.getTime());
-		// System.out.println("所在周星期一的日期：" + imptimeBegin);
-		cal.add(Calendar.DATE, 6);
-		String imptimeEnd = sdf.format(cal.getTime());
-		// System.out.println("所在周星期日的日期：" + imptimeEnd);
-		return imptimeBegin + "," + imptimeEnd;
+		cal.setFirstDayOfWeek(Calendar.MONDAY); // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+		int day = cal.get(Calendar.DAY_OF_WEEK); // 获得当前日期是一个星期的第几天
+		cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day + interval); // 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
+		logger.info("返回日期：" + sdf.format(cal.getTime()));
+		return cal.getTime();
 	}
 
 
 	/**
-	 * 根据当前日期获得上周的日期区间（上周周一和周日日期）
-	 *
-	 * @return
-	 * @author zhaoxuepu
-	 */
-	public String getLastTimeInterval() {
-		Calendar calendar1 = Calendar.getInstance();
-		Calendar calendar2 = Calendar.getInstance();
-		int dayOfWeek = calendar1.get(Calendar.DAY_OF_WEEK) - 1;
-		int offset1 = 1 - dayOfWeek;
-		int offset2 = 7 - dayOfWeek;
-		calendar1.add(Calendar.DATE, offset1 - 7);
-		calendar2.add(Calendar.DATE, offset2 - 7);
-		// System.out.println(sdf.format(calendar1.getTime()));// last Monday
-		String lastBeginDate = sdf.format(calendar1.getTime());
-		// System.out.println(sdf.format(calendar2.getTime()));// last Sunday
-		String lastEndDate = sdf.format(calendar2.getTime());
-		return lastBeginDate + "," + lastEndDate;
+	 * 根据指定日期获得上周的日期区间（周一至周日日期）
+	 * @param date
+	 * @param interval 1 周一，2 周二，3 周三，4 周四，5 周五，6 周六，7 周日
+     * @return
+     */
+	public static Date getLastWeekTime(Date date, int interval) {
+		if (interval < 1 || interval > 7) {
+			logger.error("根据当前日期获得所在周的日期区间：", "interval不合法！");
+			return null;
+		} else {
+			interval--;
+		}
+		Calendar cal = Calendar.getInstance(Locale.CHINA);
+		cal.setTime(date);
+
+		// 判断要计算的日期是否是周日，如果是则减一天计算周六的，否则会出问题，计算到下一周去了
+		int dayWeek = cal.get(Calendar.DAY_OF_WEEK);// 获得当前日期是一个星期的第几天
+		if (1 == dayWeek) {
+			cal.add(Calendar.DAY_OF_MONTH, -1);
+		}
+		cal.setFirstDayOfWeek(Calendar.MONDAY); // 设置一个星期的第一天，按中国的习惯一个星期的第一天是星期一
+		int day = cal.get(Calendar.DAY_OF_WEEK); // 获得当前日期是一个星期的第几天
+		cal.add(Calendar.DATE, cal.getFirstDayOfWeek() - day - 7 + interval); // 根据日历的规则，给当前日期减去星期几与一个星期第一天的差值
+		logger.info("返回日期：" + sdf.format(cal.getTime()));
+		return cal.getTime();
 	}
 
 	public static void main(String[] args) {
