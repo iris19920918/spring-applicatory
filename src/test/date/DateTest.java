@@ -1,5 +1,6 @@
 package date;
 
+import org.antlr.v4.runtime.dfa.DFA;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,8 @@ public class DateTest {
 
     private static final Logger logger = LoggerFactory.getLogger(DateTest.class);
 
-    static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Test
     public void testDate() {
@@ -78,4 +80,43 @@ public class DateTest {
         Date date = DateUtils.getLastWeekTime(new Date(), interval);
         logger.info("上周周" + interval + "日期是：" + sdf.format(date));
     }
+
+    @Test
+    public void testGetDayOfMonth() {
+        //获取当前月第一天：
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.MONTH, 0);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        c.set(Calendar.DAY_OF_MONTH,1);//设置为1号,当前日期既为本月第一天
+        //获取当前月最后一天
+        Calendar ca = Calendar.getInstance();
+        ca.add(Calendar.MONTH, 0);
+        ca.set(Calendar.HOUR_OF_DAY, 23);
+        ca.set(Calendar.MINUTE, 59);
+        ca.set(Calendar.SECOND, 59);
+        ca.set(Calendar.MILLISECOND, 999);
+        ca.set(Calendar.DAY_OF_MONTH, ca.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+        Date a = DateUtils.getBeforOrFutureDateOfMonth(new Date(), -1); //上月日期
+        Date firstDay = DateUtils.getMonthBegin(a); //指定日期月初
+        Date lastDay = DateUtils.getMonthEnd(a); //指定日期月末
+
+        logger.info("当前月第一天：" + df.format(firstDay) + "\n当前月最后一天：" + df.format(lastDay));
+    }
+
+    /**
+     * 获取某年的年初和年底
+     */
+    @Test
+    public void testGetMonthOfYear() {
+        Date a = DateUtils.getBeforOrFutureDateOfYear(new Date(), -1); //一年前日期
+        Date firstDay = DateUtils.getYearBegin(a); //指定日期年初
+        Date lastDay = DateUtils.getYearEnd(a); //指定日期年末
+
+        logger.info("去年第一天：" + df.format(firstDay) + "\n去年最后一天：" + df.format(lastDay));
+    }
+
 }

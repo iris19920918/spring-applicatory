@@ -22,21 +22,34 @@ public class DateUtils {
 	
 	static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	
+
+	/**
+	 * 指定日期年初
+	 * @param date
+	 * @return
+     */
 	public static Date getYearBegin(Date date){
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.MONTH, 0);
+		c.set(Calendar.DAY_OF_MONTH, 1);
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
 		c.set(Calendar.SECOND, 0);
 		c.set(Calendar.MILLISECOND, 0);
 		return c.getTime();	
 	}
+
+	/**
+	 * 指定日期年末
+	 * @param date
+	 * @return
+     */
 	public static Date getYearEnd(Date date){
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.MONTH, 11);
+		c.set(Calendar.DAY_OF_MONTH, c.getMaximum(Calendar.DAY_OF_MONTH));
 		c.set(Calendar.HOUR_OF_DAY, 23);
 		c.set(Calendar.MINUTE, 59);
 		c.set(Calendar.SECOND, 59);
@@ -486,6 +499,21 @@ public class DateUtils {
 		Calendar calendar = Calendar.getInstance(Locale.CHINA);
 		calendar.setTime(date);
 		calendar.add(Calendar.MONTH, n);
+		return calendar.getTime();
+	}
+
+	/**
+	 * n<0:获取n年前日期
+	 * n>0:获取n年后日期
+	 * n=0:获取当前日期
+	 * @param date 指定日期
+	 * @param n
+	 * @return
+	 */
+	public static Date getBeforOrFutureDateOfYear(Date date, final int n) {
+		Calendar calendar = Calendar.getInstance(Locale.CHINA);
+		calendar.setTime(date);
+		calendar.add(Calendar.YEAR, n);
 		return calendar.getTime();
 	}
 
