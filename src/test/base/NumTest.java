@@ -3,11 +3,13 @@ package base;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.DateUtils;
 import util.NumberValidationUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -185,10 +187,12 @@ public class NumTest {
      */
     @Test
     public void getInteger() {
-        int month = 33;
+//        int month = 23;
+        int month = Math.abs(DateUtils.countMonths(DateUtils.parse("2016-04-30", DateUtils.PATTERN_DAY), new Date()));
         int age = (int) Math.floor(month/12); //向下取整
+        int a = month/12;
         logger.info("月龄=" + month);
-        logger.info("年龄=" + age);
+        logger.info("年龄=" + age + "a=" + a);
     }
 
     /**
