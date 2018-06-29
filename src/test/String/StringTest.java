@@ -22,4 +22,12 @@ public class StringTest {
         String signType = "null";
         logger.info("---" + "3,4,5".contains(signType));
     }
+
+    @Test
+    public void stuSub() {
+        String referer = "https://saas.ishanshan.com/saas-web/login";
+
+        String str = referer.substring(referer.indexOf("//") + 2);
+        logger.info("str=" + str);
+    }
 }

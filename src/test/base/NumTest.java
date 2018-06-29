@@ -211,8 +211,36 @@ public class NumTest {
      */
     @Test
     public void getYearOfLong() {
-        Long max = Long.MAX_VALUE;
-        Long year = max/1000/60/60/24/365;
-        logger.info("Long最多存放" + year + "年");
+//        Long max = Long.MAX_VALUE;
+//        Long year = max/1000/60/60/24/365;
+//        logger.info("Long最多存放" + year + "年");
+
+        Double a = 1D;
+        Integer b = 1;
+
+        double c = 1280.0;
+
+        Long d = new Long(1280L);
+        Long e = new Long(1280L);
+        if (d.longValue() == e.longValue()) {
+            logger.info("true");
+        } else {
+            logger.info("false");
+        }
+
+//        logger.info("a=b:"+a.equals(b) + ";c=d" + (d == 1205));
+    }
+
+    @Test
+    public void changeTest() {
+        double a = 9D;
+        logger.info("调用之前 a=" + a);
+        changeValue(a);
+        logger.info("调用之后 a=" + a);
+
+    }
+
+    public void changeValue(double a) {
+        a = 10D;
     }
 }
