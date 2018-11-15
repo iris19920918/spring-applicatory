@@ -88,4 +88,40 @@ public class ListTest {
             }
         }
     }
+
+    /**
+     * 测试addAll
+     */
+    @Test
+    public void testAddAll() {
+        List<Long> periodFlowIdList = new ArrayList<>();
+        List<Long> periodFlowIdListSpe = new ArrayList<>();
+        List<Long> periodFlowIdListCom = new ArrayList<>();
+        List<Long> periodFlowIdListCur = new ArrayList<>();
+        periodFlowIdListSpe.add(1L);
+//        periodFlowIdListCom.add(1L);
+        packList(periodFlowIdListCom);
+        periodFlowIdListCur.add(2L);
+        periodFlowIdList.addAll(periodFlowIdListSpe);
+        periodFlowIdList.addAll(periodFlowIdListCom);
+        periodFlowIdList.addAll(periodFlowIdListCur);
+        logger.info("periodFlowIdList=" + JSONObject.toJSONString(periodFlowIdList));
+    }
+
+    public void packList(List a) {
+        logger.info("a=" + JSONObject.toJSONString(a));
+        getList(a);
+        logger.info("a=" + JSONObject.toJSONString(a));
+    }
+
+    public void getList(List list) {
+        list.add(3L);
+//        return list;
+    }
+
+    public List<Long> getList() {
+        List list = new ArrayList<>();
+        list.add(3L);
+        return list;
+    }
 }

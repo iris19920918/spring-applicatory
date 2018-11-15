@@ -241,6 +241,6 @@ public class NumTest {
     }
 
     public void changeValue(double a) {
-        a = 10D;
+        a++;
     }
 }
