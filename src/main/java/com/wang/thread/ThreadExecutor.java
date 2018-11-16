@@ -41,9 +41,9 @@ public class ThreadExecutor {
         if (coreSize < poolSize) {
             addThread(runnable);
         } else {
-            System.out.println("加入阻塞队列" + runnable.toString() + "队列长度：" + queue.size());
             try {
                 queue.put(runnable);                //coreSize>poolSize 加入阻塞队列中去
+                System.out.println("加入阻塞队列" + runnable.toString() + "队列长度：" + queue.size());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
