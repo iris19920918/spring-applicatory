@@ -21,7 +21,7 @@ public class Consumer implements Runnable {
                 Product product = s.pop();
                 System.out.println("线程：" + Thread.currentThread().getName() + "，" + name + "已消费(" + product.toString() + ").仓库还剩" + s.getSize() + "个.");
                 System.out.println("===============");
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

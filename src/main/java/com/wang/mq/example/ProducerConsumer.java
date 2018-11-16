@@ -35,8 +35,15 @@ public class ProducerConsumer {
         //生产
         Producer p = new Producer("一", s);
         Producer p2 = new Producer("二", s);
+        Producer p3 = new Producer("三", s);
+        Producer p4 = new Producer("四", s);
+        Producer p5 = new Producer("五", s);
+        Producer p6 = new Producer("六", s);
         producerExecutor.exec(p);
         producerExecutor.exec(p2);
+        producerExecutor.exec(p3);
+        producerExecutor.exec(p4);
+//        producerExecutor.exec(p5);
 
         try {
             Thread.sleep(5000);
