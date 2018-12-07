@@ -22,3 +22,11 @@ spring:
     multipart:
       max-file-size: 5MB
       max-request-size: 20MB
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://10.14.69.48:3311/model_dev_db?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: hik12345+
+    init-connect-count: 10
+    max-connects: 200
+    increment-count: 10

@@ -1,4 +1,8 @@
-package com.wang.dao.conpool;
+package dao.conpool;
+
+import com.wang.dao.conpool.JdbcPool;
+import com.wang.dao.conpool.PoolConnection;
+import com.wang.dao.conpool.PoolManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
