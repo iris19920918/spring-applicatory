@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by wangdd on 2018/8/7.
@@ -32,7 +33,7 @@ public class Test01 {
      * @throws IOException
      */
     @Test
-    public void testPublish() throws IOException {
+    public void testPublish() throws IOException, TimeoutException {
         //创建链接工厂
         ConnectionFactory connFac = new ConnectionFactory();
 
