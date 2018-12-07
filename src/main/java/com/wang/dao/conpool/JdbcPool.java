@@ -18,44 +18,32 @@ import java.util.Vector;
 public class JdbcPool implements IPool {
 
     @Value("${spring.datasource.driver-class-name}")
-    private String jdbcDriver = "org.mariadb.jdbc.Driver";
+    private String jdbcDriver;
 
     @Value("${spring.datasource.url}")
-    private String jdbcUrl = "jdbc:mariadb://10.14.69.48:3311/model_dev_db?useUnicode=true&characterEncoding=UTF-8";
+    private String jdbcUrl;
 
     @Value("${spring.datasource.username}")
-    private String username = "root";
+    private String username;
 
     @Value("${spring.datasource.password}")
-    private String password = "hik12345+";
+    private String password;
 
-        private static Integer initConnectCount = 10;
+    @Value("${spring.datasource.init-connect-count}")
+    private static Integer initConnectCount;
 
-        private static Integer maxConnects = 100;
+    @Value("${spring.datasource.max-connects}")
+    private static Integer maxConnects;
 
-        private static Integer incrementCount = 5;
+    @Value("${spring.datasource.increment-count}")
+    private static Integer incrementCount;
 
-        private static Vector<PoolConnection> connections = new Vector<>();
+    private static Vector<PoolConnection> connections = new Vector<>();
 
         /**
          * 通过实例初始化块来初始化
          * */
  {
-//读取对应的配置文件，加载入properties中，并设置到对应的参数中
-//     InputStream is = JdbcPool.class.getClassLoader().getResourceAsStream("jdbc.properties");
-//     Properties properties = new Properties();
-//     try {
-//         properties.load(is);
-//     } catch (IOException e) {
-//         e.printStackTrace();
-//     }
-//     jdbcDriver = properties.getProperty("jdbcDriver");
-//     jdbcUrl = properties.getProperty("jdbcUrl");
-//     username = properties.getProperty("username");
-//     password = properties.getProperty("password");
-//     initConnectCount = Integer.valueOf(properties.getProperty("initConnectCount"));
-//     maxConnects = Integer.valueOf(properties.getProperty("maxConnects"));
-//     incrementCount = Integer.valueOf(properties.getProperty("incrementCount"));
             try {
                 /*
                  * 注册jdbc驱动
