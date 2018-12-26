@@ -1,6 +1,7 @@
 package thread;
 
 import com.wang.thread.MyTask;
+import com.wang.thread.ThreadDemo;
 import org.junit.Test;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -25,5 +26,23 @@ public class MyTaskTest {
                     "，已执行完任务数目："+executor.getCompletedTaskCount());
         }
         executor.shutdown();
+    }
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        ThreadDemo td = new ThreadDemo();
+        new Thread(td).start();
+
+        while (true) {
+//            synchronized (td) {  //加上synchronized关键字或flag用关键字volatile修饰(强制线程每次读取该值的时候都去“主内存”中取值)，都可以读取到true
+                if (td.isFlag()) {
+                    System.out.println("-------while----" + td.isFlag());
+                    break;
+//                }
+            }
+        }
     }
 }
