@@ -3,7 +3,7 @@ server:
   port: 9091
   contextPath: /spring-applicatory
 params:
-  uploadPath: /home/upload
+ uploadPath: /home/upload
 #spring:
 #  thymeleaf:
 #    mode: HTML5
@@ -22,6 +22,9 @@ spring:
     multipart:
       max-file-size: 5MB
       max-request-size: 20MB
+  boot:
+    admin:
+      url: http://localhost:8000/spring-boot-admin
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://10.14.69.48:3311/model_dev_db?useUnicode=true&characterEncoding=UTF-8
@@ -30,3 +33,10 @@ spring:
     init-connect-count: 10
     max-connects: 200
     increment-count: 10
+
+#RestTemplate配置
+remote:
+  maxTotalConnect: 200 #连接池的最大连接数
+  maxConnectPerRoute: 1000 #单个主机的最大连接数
+  connectTimeout: 10000 #连接超时
+  readTimeout: 30000 #读取超时
