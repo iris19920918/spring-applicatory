@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,16 @@ import java.util.Map;
 public class MapTest {
 
     private static final Logger logger = LoggerFactory.getLogger(MapTest.class);
+
+    public final static Map<String, String> PROCESS_TABLE;
+
+    static {
+//        PROCESS_TABLE = new HashMap<>();
+        PROCESS_TABLE = Collections.unmodifiableMap(new HashMap<>());
+        PROCESS_TABLE.put("DRIVE_IDENTIFICATION", "processes/DriverIdentificationApplication.bpmn");
+        PROCESS_TABLE.put("DRIVE_DICT", "processes/DriverDict.bpmn");
+        PROCESS_TABLE.put("COMPONENT_PUBLISH", "processes/ComponentPublishApplication.bpmn");
+    }
 
     @Test
     public void mapTest() {
