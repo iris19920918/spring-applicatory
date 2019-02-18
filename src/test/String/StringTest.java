@@ -1,5 +1,7 @@
 package String;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,5 +36,17 @@ public class StringTest {
 
         String str = referer.substring(referer.indexOf("//") + 2);
         logger.info("str=" + str);
+    }
+
+    @Test
+    public void strTest() {
+        String a = "[{id=demo_language, type=languagePack, version=0.1.0}, {id=demo_document, type=documentPack, version=1.1.0}, {id=dac_drv_vss_hiksdk_general, type=dacDriverPack, version=1.0.0}]";
+        JSONArray jsonArray = JSONArray.parseArray(a);
+        logger.info("jsonArray:{}", JSONObject.toJSONString(jsonArray));
+    }
+
+    private String addStr(String a) {
+        a += "bb";
+        return a;
     }
 }
