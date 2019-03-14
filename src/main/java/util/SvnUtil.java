@@ -61,6 +61,13 @@ public class SvnUtil {
         updateClient.setIgnoreExternals(false);
     }
 
+    /**
+     * 检出SVN到本地目录
+     * @param localPath 本地路径
+     * @param url SVN路径
+     * @return
+     * @throws SVNException
+     */
     public long checkOut(String localPath, String url) throws SVNException {
         //要把版本库的内容check out到的目录
         File wcDir = new File(localPath);
