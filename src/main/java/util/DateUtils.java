@@ -25,7 +25,8 @@ public class DateUtils {
 	public static final String PATTERN_DAY = "yyyy-MM-dd";
 	public static final String PATTERN_ONLYTIME = "HH:mm:ss";
 	public static final String PATTERN_ONLMIN = "HH:mm";
-	
+	public static final String PATTERN_TIME_LONG = "yyyyMMddHHmmssmmm";
+
 	/**
 	 * 得到yyyy-MM-dd HH:mm:ss格式的SimpleDateFormat
 	 * @return

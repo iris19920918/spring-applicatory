@@ -23,7 +23,7 @@ public class SvnTest {
      */
     @Test
     public void svnTest(){
-        String url = "https://192.0.0.240/PJ03R2018080803/集成环境/99相关资料/核心服务/components";
+        String url = "https://192.0.0.240/PJ03R2018080803/集成环境/99相关资料/核心服务/tools";
         SvnUtil svn = new SvnUtil("wangdingding5", "20181203wDD");
         List<SVNDirEntry> svnDirEntryList = svn.listFolder(url);
         log.info("返回结果：{}", JSONObject.toJSONString(svnDirEntryList));

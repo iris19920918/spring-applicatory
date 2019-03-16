@@ -28,8 +28,10 @@ public class DateTest {
         int speDateInt = DateUtils.formatInt(DateUtils.getBeforOrFutureDate(-30), "yyyyMMdd");
 //        logger.info("speDateStr:" + speDateStr + ";speDateInt:" + speDateInt);
 
-        int days = DateUtils.getDaysOfMonth(DateUtils.parse(date, DateUtils.PATTERN_DAY));
-        logger.info("days:" + days);
+//        int days = DateUtils.getDaysOfMonth(DateUtils.parse(date, DateUtils.PATTERN_DAY));
+//        logger.info("days:" + days);
+        logger.info("时间sss：{}", DateUtils.format(new Date(), DateUtils.PATTERN_TIME_LONG));
+        logger.info("时间ss：{}", DateUtils.format(new Date(), "yyyyMMddHHmmss"));
     }
 
     /**
