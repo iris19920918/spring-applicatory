@@ -1,11 +1,17 @@
 package com.wang.stream;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
+import javax.swing.text.html.ObjectView;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -65,5 +71,13 @@ public class Java8StreamTester {
         // 并行处理
         count = strings.parallelStream().filter(string -> string.isEmpty()).count();
         System.out.println("空字符串的数量为: " + count);
+
+        //将List<Map>转为Set
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "张三");
+        mapList.add(map);
+        Set<Object> set = mapList.stream().map(m -> m.get("name")).collect(Collectors.toSet());
+        System.out.println("将List<Map>转为Set，返回结果：" + JSONObject.toJSONString(set));
     }
 }
