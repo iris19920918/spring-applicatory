@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.URL;
 import java.util.UUID;
 
 /**
@@ -48,5 +49,29 @@ public class StringTest {
     private String addStr(String a) {
         a += "bb";
         return a;
+    }
+
+    @Test
+    public void testToString() {
+        Object a = null;
+        String b = a.toString();
+        logger.info(b);
+    }
+
+    /**
+     * 测试class.getResource
+     */
+    @Test
+    public void testGetResource() {
+        System.out.println("测试========》");
+        String s1=this.getClass().getResource("").getPath();
+        String s2=this.getClass().getResource("/").getPath();
+        String s3= Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        URL url = this.getClass().getClassLoader().getResource("");
+        String s4= this.getClass().getClassLoader().getResource("").getPath();
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println(s4);
     }
 }
