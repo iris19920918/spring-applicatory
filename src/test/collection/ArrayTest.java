@@ -1,8 +1,14 @@
 package collection;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by WANGDD on 2017/5/22.
@@ -27,5 +33,49 @@ public class ArrayTest {
 //            Long a = Long.valueOf(strArray[i]);
 //            System.out.println(i);
 //        }
+    }
+
+    /**
+     * Arrays.asList()测试
+     * 说明：asList 的返回对象是一个 Arrays 内部类，并没有实现集合的修改方法。 Arrays . asList
+     * 体现的是适配器模式，只是转换接口，后台的数据仍是数组。
+     * 第一种情况： list.add("yangguanbao");  运行时异常。
+     * 第二种情况： str[0] = "gujin"; 那么 list.get(0) 也会随之修改。
+     */
+    @Test
+    public void asListTest() {
+        String[] str = new String[] { "you", "wu" };
+        List list = Arrays.asList(str);
+        str[0] = "gujin";
+        logger.info("list.get(0): {}", list.get(0));
+    }
+
+    /**
+     * 测试 foreach 循环里进行元素的 remove / add 操作
+     */
+    @Test
+    public void listRemoveTest() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+
+        //正例:
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String item = iterator.next();
+            if ("1".equals(item)) {
+                iterator.remove();
+            }
+        }
+
+        //反例：
+        for (String item : list) {
+            if ("1".equals(item)) {
+                list.remove(item);
+            }
+        }
+        //说明：以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的结果吗？
+        //换成“2”会报java.util.ConcurrentModificationException错
+        logger.info("list:{}", JSONObject.toJSONString(list));
     }
 }
